@@ -1,0 +1,2 @@
+# MySecretCase-Youtube-Seo-Optimization-Pipeline-self-hosted-
+Demo requested by MySecretCase. An n8n workflow that takes 400 YouTube videos (title,description,tags,full transcript), works out what each one is actually about, resolves keyword conflicts across the whole catalogue, and generates an optimized title and description for every video. Built self-hosted on Docker, running entirely on free-tier APIs.
