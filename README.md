@@ -411,8 +411,6 @@ It also flattens `keyword_secondarie` to a pipe-joined string and sorts by statu
 
 **Output:** 399 rows — all of them, processed or flagged.
 
-<!-- TODO: add the link to the final sheet once it's up -->
-
 ![TITLE COMPARISON](images_mysecretcase/FULL_RESULT_SHEET.png)
 
 ---
@@ -431,7 +429,6 @@ It also flattens `keyword_secondarie` to a pipe-joined string and sorts by statu
 | Fase 1 input tokens | ~1.3M (~3,233 per video) |
 | Total LLM calls | 790 |
 
-<!-- TODO: add the override-proposed count and the post-cleanup truncation count once you've read them off the guard log -->
 
 ---
 
