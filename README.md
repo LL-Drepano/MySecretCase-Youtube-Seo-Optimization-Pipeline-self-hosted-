@@ -472,6 +472,40 @@ I measured it rather than guessing — 8% of processed videos end up on a generi
 
 That's the real size of the problem, and it's why the Fase 3 override exists at all.
 
+### Secondary keyword ownership — a V2 improvement
+
+One weakness in the current handoff between Fase 2 and Fase 3 is that the model receives `keyword_secondarie[]` without any information about their global ownership state.
+
+After Fase 2, some of those alternatives may still be unclaimed, while others may already belong to another video. Fase 3 cannot tell the difference: it sees only the current video's `keyword_target` and its alternatives, and evaluates them semantically in isolation.
+
+That means the model can choose a genuinely better-fitting secondary keyword that is already owned elsewhere, forcing the guard to reject the override afterwards.
+
+A stronger version would propagate ownership metadata from the deterministic phase into the generation phase, for example:
+
+```text
+keyword_target: X
+
+keyword_secondarie:
+- A — occupied
+- B — unclaimed
+- C — occupied
+```
+
+The model could then be instructed to keep the assigned target by default, and only override it with an unclaimed alternative that is clearly more specific.
+
+If every suitable alternative were already occupied, I could also allow the model to propose a new candidate rather than forcing it back onto a weak keyword.
+
+That still would not remove the need for the final guard.
+
+Two videos are processed independently in Fase 3, so they could both select the same currently-unclaimed alternative, or independently generate the same new query. A newly generated phrase could also canonicalize to an existing keyword.
+
+So the stronger architecture would be:
+
+**deterministic ownership metadata → constrained LLM override → deterministic global validation**
+
+The current version validates conflicts after generation. A second iteration would prevent more of those conflicts before generation as well, while still asserting the invariant afterwards.
+
+
 Three things push back on it:
 
 - the code-based rescue pass in Fase 2;
