@@ -7,7 +7,7 @@
  *
  * Why this exists:
  *   Fase 2 enforces one-head-keyword-one-owner globally. The Fase 3 override
- *   picks from keyword_secondarie, which by construction holds keywords that
+ *   picks from keyword_secondarie, which may hold keywords that
  *   OTHER videos won. So an unchecked override can silently re-create the exact
  *   cannibalization the two-stage architecture exists to prevent — and it will
  *   cluster precisely where the override fires, on videos stranded on generic
@@ -88,7 +88,7 @@ let upstreamBreaks = 0;
 for (const group of groups.values()) {
   if (group.length < 2) continue;
 
-  // A row that kept its Fase 2 assignment outranks any overrider by construction.
+  // A row that kept its Fase 2 assignment outranks any overrider.
   const incumbents = group.filter((r) => !r.override_llm);
 
   // Two incumbents colliding means Fase 2's uniqueness was already broken:
