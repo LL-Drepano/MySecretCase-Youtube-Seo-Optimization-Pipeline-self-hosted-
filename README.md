@@ -545,7 +545,7 @@ These are generation rules used by the demo, not measured evidence of ranking im
 
 ---
 
-## What the workflow demonstrates
+## Key Techniques
 
 The final workflow handles the complete path from source catalogue to reviewable XLSX:
 
