@@ -12,6 +12,9 @@ Built self-hosted on Docker and run entirely on free-tier APIs during the task.
 
 ---
 
+## Updates
+Added EVAL HARNESS working on: Record preservation, Keyword uniqueness, Title Length, Required files.
+
 ## The problem
 
 The obvious approach is to loop over 400 rows, ask an LLM which keyword each video should target, and write the results to a spreadsheet.
@@ -563,6 +566,3 @@ XLSX ingest
 The main issue discovered during development was that solving a global constraint once is not enough when a later per-item model call is allowed to modify the constrained value.
 
 That is why keyword ownership is checked again after generation instead of trusting the previous stage.
-
-## Updates
-Added EVAL HARNESS
