@@ -563,3 +563,6 @@ XLSX ingest
 The main issue discovered during development was that solving a global constraint once is not enough when a later per-item model call is allowed to modify the constrained value.
 
 That is why keyword ownership is checked again after generation instead of trusting the previous stage.
+
+## Updates
+Added EVAL HARNESS
